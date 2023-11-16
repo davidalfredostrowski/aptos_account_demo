@@ -1,0 +1,30 @@
+
+
+
+
+
+
+
+
+
+
+ubuntu@ip-172-31-43-171:~/aptos-core/aptos-move/move-examples/hello_blockchain$  /home/ubuntu/.local/bin/aptos move compile --named-addresses hello_blockchain=default
+Compiling, may take a little while to download git dependencies...
+INCLUDING DEPENDENCY AptosFramework
+INCLUDING DEPENDENCY AptosStdlib
+INCLUDING DEPENDENCY MoveStdlib
+BUILDING Examples
+error[E03001]: address with no value
+   ┌─ /home/ubuntu/aptos-core/aptos-move/move-examples/hello_blockchain/sources/hello_blockchain.move:37:101
+   │
+37 │         let resource_signer_cap = resource_account::retrieve_resource_account_cap(resource_signer, @source_addr);
+   │                                                                                                     ^^^^^^^^^^^ address 'source_addr' is not assigned a value. Try assigning it a value when calling the compiler
+
+error[E03009]: unbound variable
+   ┌─ /home/ubuntu/aptos-core/aptos-move/move-examples/hello_blockchain/sources/hello_blockchain.move:56:71
+   │
+56 │         let resource_signer = account::create_signer_with_capability(&module_data.signer_cap);
+   │                                                                       ^^^^^^^^^^^ Invalid variable usage. Unbound variable 'module_data'
+
+{
+  "Error": "Move compilation failed: Compilation error"
