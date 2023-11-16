@@ -2,7 +2,16 @@ module hello_resource_account::message {
     use std::error;
     use std::signer;
     use std::string;
+    use aptos_framework::account::SignerCapability;
+    use aptos_framework::resource_account;
+    use aptos_framework::account;
     use aptos_framework::event;
+
+    struct ModuleData has key {
+        // Storing the signer capability here, so the module can programmatically sign for transactions
+        signer_cap: SignerCapability,
+        token_data_id: TokenDataId,
+    }
 
     //:!:>resource
     struct MessageHolder has key {
@@ -20,6 +29,22 @@ module hello_resource_account::message {
     /// There is no message present
     const ENO_MESSAGE: u64 = 0;
 
+    fun init_module(resource_signer: &signer) {
+       // Retrieve the resource signer's signer capability and store it within the `ModuleData`.
+        // Note that by calling `resource_account::retrieve_resource_account_cap` to retrieve the resource account's signer capability,
+        // we rotate th resource account's authentication key to 0 and give up our control over the resource account. Before calling this function,
+        // the resource account has the same authentication key as the source account so we had control over the resource account.
+        let resource_signer_cap = resource_account::retrieve_resource_account_cap(resource_signer, @source_addr);
+
+        // Store the token data id and the resource account's signer capability within the module, so we can programmatically
+        // sign for transactions in the `mint_event_ticket()` function.
+        move_to(resource_signer, ModuleData {
+            signer_cap: resource_signer_cap,
+            token_data_id,
+        });
+}
+
+
     #[view]
    public entry  fun get_message(addr: address): string::String acquires MessageHolder {
         assert!(exists<MessageHolder>(addr), error::not_found(ENO_MESSAGE));
@@ -27,6 +52,26 @@ module hello_resource_account::message {
     }
 
     public entry fun set_message(account: signer, message: string::String)
+    acquires MessageHolder {
+
+        let resource_signer = account::create_signer_with_capability(&module_data.signer_cap);
+        let account_addr = signer::address_of(&resource_signer);
+        if (!exists<MessageHolder>(account_addr)) {
+            move_to(&account, MessageHolder {
+                message,
+            })
+        } else {
+            let old_message_holder = borrow_global_mut<MessageHolder>(account_addr);
+            let from_message = old_message_holder.message;
+            event::emit(MessageChange {
+                account: account_addr,
+                from_message,
+                to_message: copy message,
+            });
+          old_message_holder.message = message;
+        }
+    }
+    public entry fun set_message_orig(account: signer, message: string::String)
     acquires MessageHolder {
         let account_addr = signer::address_of(&account);
         if (!exists<MessageHolder>(account_addr)) {
