@@ -47,3 +47,28 @@ error[E03009]: unbound variable
 
 {
   "Error": "Move compilation failed: Compilation error"
+
+
+
+
+
+
+/home/ubuntu/.local/bin/aptos init --profile  nft-receiver
+Configuring for profile nft-receiver
+Choose network from [devnet, testnet, mainnet, local, custom | defaults to devnet]
+
+No network given, using devnet...
+Enter your private key as a hex literal (0x...) [Current: None | No input: Generate new key (or keep one if present)]
+
+No key given, generating key...
+Account 0xfa25be32d75b0b4780a07c02f2fa82f4c9546d8a2c7f0f6fa2bcae44e63b5504 doesn't exist, creating it and funding it with 100000000 Octas
+Account 0xfa25be32d75b0b4780a07c02f2fa82f4c9546d8a2c7f0f6fa2bcae44e63b5504 funded successfully
+
+---
+Aptos CLI is now set up for account 0xfa25be32d75b0b4780a07c02f2fa82f4c9546d8a2c7f0f6fa2bcae44e63b5504 as profile nft-receiver!  Run `aptos --help` for more information about commands
+{
+  "Result": "Success"
+}
+
+
+
