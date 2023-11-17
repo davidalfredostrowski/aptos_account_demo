@@ -174,4 +174,58 @@ ubuntu@ip-172-31-43-171:~/aptos-core/aptos-move/move-examples/mint_nft/2-Using-R
 
 
 
+/home/ubuntu/.local/bin/aptos init --profile  nft-receiver
+Configuring for profile nft-receiver
+Choose network from [devnet, testnet, mainnet, local, custom | defaults to devnet]
+
+No network given, using devnet...
+Enter your private key as a hex literal (0x...) [Current: None | No input: Generate new key (or keep one if present)]
+
+No key given, generating key...
+Account 0xf0801d0222b25f5460816a44a8a582894c24879fa1f2f0ac1c911907671d88b4 doesn't exist, creating it and funding it with 100000000 Octas
+Account 0xf0801d0222b25f5460816a44a8a582894c24879fa1f2f0ac1c911907671d88b4 funded successfully
+
+---
+Aptos CLI is now set up for account 0xf0801d0222b25f5460816a44a8a582894c24879fa1f2f0ac1c911907671d88b4 as profile nft-receiver!  Run `aptos --help` for more information about commands
+{
+  "Result": "Success"
+}
+
+
+ubuntu@ip-172-31-43-171:~/aptos-core/aptos-move/move-examples/mint_nft/2-Using-Resource-Account$ /home/ubuntu/.local/bin/aptos move run --function-id 0f5a61a9fa06b147550945053353fd7d76158c62238cf21008817acca28f9bac::create_nft_with_resource_account::mint_event_ticket --profile nft-receiver
+Do you want to submit a transaction for a range of [159300 - 238900] Octas at a gas unit price of 100 Octas? [yes/no] >
+yes
+{
+  "Result": {
+    "transaction_hash": "0xc9462b8dd6c36cb6177a5dffd6ecb4e555bdc25e350005cceeba3c36eb9746db",
+    "gas_used": 1593,
+    "gas_unit_price": 100,
+    "sender": "f0801d0222b25f5460816a44a8a582894c24879fa1f2f0ac1c911907671d88b4",
+    "sequence_number": 0,
+    "success": true,
+    "timestamp_us": 1700251952416243,
+    "version": 479257,
+    "vm_status": "Executed successfully"
+  }
+}
+
+
+
+
+
+
+###### most important ref: 
+
+
+
+https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/move-examples/mint_nft/2-Using-Resource-Account/sources/create_nft_with_resource_account.move
+
+
+
+
+
+
+
+
+
 
