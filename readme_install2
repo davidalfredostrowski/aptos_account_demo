@@ -1,56 +1,22 @@
- ls
-    2  sudo apt-get update
-    3  sudo apt-get install -y ca-certificates curl gnupg
-    4  sudo mkdir -p /etc/apt/keyrings
-    5  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-    6  NODE_MAJOR=20
-    7  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-    8  sudo apt-get update
-    9  sudo apt-get install nodejs -y
-   10  node -v
-   11  npm i aptos
-   12  sudo npm install -g pnpm
-   13  sudo apt install python3-pip
-   14  pip3 install aptos-sdk
-   15  git clone https://github.com/aptos-labs/aptos-core.git
-   16  curl -fsSL "https://aptos.dev/scripts/install_cli.py" | python3
-   17  cd aptos-core/aptos-move/move-examples/hello_blockchain
-   18  cd ..
-   19  ls
-
-
-
-
-
-
-
-
-
-
-ubuntu@ip-172-31-43-171:~/aptos-core/aptos-move/move-examples/hello_blockchain$  /home/ubuntu/.local/bin/aptos move compile --named-addresses hello_blockchain=default
-Compiling, may take a little while to download git dependencies...
-INCLUDING DEPENDENCY AptosFramework
-INCLUDING DEPENDENCY AptosStdlib
-INCLUDING DEPENDENCY MoveStdlib
-BUILDING Examples
-error[E03001]: address with no value
-   ┌─ /home/ubuntu/aptos-core/aptos-move/move-examples/hello_blockchain/sources/hello_blockchain.move:37:101
-   │
-37 │         let resource_signer_cap = resource_account::retrieve_resource_account_cap(resource_signer, @source_addr);
-   │                                                                                                     ^^^^^^^^^^^ address 'source_addr' is not assigned a value. Try assigning it a value when calling the compiler
-
-error[E03009]: unbound variable
-   ┌─ /home/ubuntu/aptos-core/aptos-move/move-examples/hello_blockchain/sources/hello_blockchain.move:56:71
-   │
-56 │         let resource_signer = account::create_signer_with_capability(&module_data.signer_cap);
-   │                                                                       ^^^^^^^^^^^ Invalid variable usage. Unbound variable 'module_data'
-
-{
-  "Error": "Move compilation failed: Compilation error"
-
-
-
-
+ls
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+NODE_MAJOR=20
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+sudo apt-get update
+sudo apt-get install nodejs -y
+node -v
+npm i aptos
+sudo npm install -g pnpm
+sudo apt install python3-pip
+pip3 install aptos-sdk
+git clone https://github.com/aptos-labs/aptos-core.git
+curl -fsSL "https://aptos.dev/scripts/install_cli.py" | python3
+cd aptos-core/aptos-move/move-examples/hello_blockchain
+cd ..
+ls
 
 
 /home/ubuntu/.local/bin/aptos init --profile  nft-receiver
@@ -72,11 +38,6 @@ Aptos CLI is now set up for account 0xfa25be32d75b0b4780a07c02f2fa82f4c9546d8a2c
 
 
  cd aptos-core/aptos-move/move-examples/mint_nft/2-Using-Resource-Account
-
-
-
-
-
 
 #### comprehensive...
 
@@ -221,8 +182,20 @@ yes
 https://github.com/aptos-labs/aptos-core/blob/main/aptos-move/move-examples/mint_nft/2-Using-Resource-Account/sources/create_nft_with_resource_account.move
 
 
+#past errors......
+ubuntu@ip-172-31-43-171:~/aptos-core/aptos-move/move-examples/hello_blockchain$  /home/ubuntu/.local/bin/aptos move compile --named-addresses hello_blockchain=default
+Compiling, may take a little while to download git dependencies...
+INCLUDING DEPENDENCY AptosFramework
+INCLUDING DEPENDENCY AptosStdlib
+INCLUDING DEPENDENCY MoveStdlib
+BUILDING Examples
+error[E03001]: address with no value
+   ┌─ /home/ubuntu/aptos-core/aptos-move/move-examples/hello_blockchain/sources/hello_blockchain.move:37:101
+   │
+37 │         let resource_signer_cap = resource_account::retrieve_resource_account_cap(resource_signer, @source_addr);
+   │                                                                                                     ^^^^^^^^^^^ address 'source_addr' is not assigned a value. Try assigning it a value when calling the compiler
 
-
+e0
 
 
 
