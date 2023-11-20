@@ -14,9 +14,6 @@ sudo apt install python3-pip
 pip3 install aptos-sdk
 git clone https://github.com/aptos-labs/aptos-core.git
 curl -fsSL "https://aptos.dev/scripts/install_cli.py" | python3
-cd aptos-core/aptos-move/move-examples/hello_blockchain
-cd ..
-ls
 
 
 /home/ubuntu/.local/bin/aptos init --profile  nft-receiver
@@ -110,12 +107,16 @@ Aptos CLI is now set up for account 0xd6afaa909d19e7a52ae7274cb51feeb86d4d107d04
 {
   "Result": "Success"
 }
+
+
 ubuntu@ip-172-31-43-171:~/aptos-core/aptos-move/move-examples/mint_nft/2-Using-Resource-Account$ /home/ubuntu/.local/bin/aptos move create-resource-account-and-publish-package --seed 1235 --address-name mint_nft --profile default --named-addresses source_addr= 0xd6afaa909d19e7a52ae7274cb51feeb86d4d107d04f30824866809277d06e378
 error: unexpected argument '0xd6afaa909d19e7a52ae7274cb51feeb86d4d107d04f30824866809277d06e378' found
 
 Usage: aptos move create-resource-account-and-publish-package [OPTIONS] --address-name <ADDRESS_NAME> --seed <SEED>
 
 For more information, try '--help'.
+
+# take the address from the aptos init 
 ubuntu@ip-172-31-43-171:~/aptos-core/aptos-move/move-examples/mint_nft/2-Using-Resource-Account$ /home/ubuntu/.local/bin/aptos move create-resource-account-and-publish-package --seed 1235 --address-name mint_nft --profile default --named-addresses source_addr=0xd6afaa909d19e7a52ae7274cb51feeb86d4d107d04f30824866809277d06e378
 Compiling, may take a little while to download git dependencies...
 INCLUDING DEPENDENCY AptosFramework
