@@ -172,7 +172,21 @@ yes
 }
 
 
+Version: 
+2464722
+Status: 
+Success
 
+Sender: 
+Identicon
+0x2f40…cfa0
+Smart Contract: 
+Identicon
+0x36ba…3866
+Function: 
+create_nft_with_resource_account::mint_event_ticket
+Amount: 
+0 APT
 
 
 
